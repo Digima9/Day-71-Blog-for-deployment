@@ -6,7 +6,7 @@ from flask_gravatar import Gravatar
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, Text
+from sqlalchemy import Integer, String, Text, create_engine
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
@@ -68,6 +68,7 @@ class Base(DeclarativeBase):
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI",'sqlite:///posts.db')
+create = create_engine("postgresql://digimag_user:yLtIOv76mnE7jQocBKM2TbxT11NRrQOf@dpg-codtiqgl5elc73fu9vj0-a/digimag")
 db = SQLAlchemy(model_class=Base)
 
 db.init_app(app)
