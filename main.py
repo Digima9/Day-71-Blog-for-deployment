@@ -10,10 +10,11 @@ from sqlalchemy import Integer, String, Text
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
-# import keys
 import os
 import pprint
+from dotenv import load_dotenv
 
+load_dotenv()
 # Optional: add contact me email functionality (Day 60)
 # import smtplib
 
@@ -36,7 +37,7 @@ app = Flask(__name__)
 
 
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-
+print(os.environ.get("SECRET_KEY"))
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
