@@ -30,14 +30,13 @@ pip3 install -r requirements.txt
 This will install the packages from the requirements.txt for this project.
 '''
 
-os.environ['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-os.environ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
-
 env_var = os.environ
 pprint.pprint(dict(env_var), width=1)
 app = Flask(__name__)
 
+
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
