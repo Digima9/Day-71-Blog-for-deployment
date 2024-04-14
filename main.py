@@ -67,8 +67,8 @@ class Base(DeclarativeBase):
     pass
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI",'sqlite:///posts.db')
-create = create_engine("postgresql://digimag_user:yLtIOv76mnE7jQocBKM2TbxT11NRrQOf@dpg-codtiqgl5elc73fu9vj0-a/digimag")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI", 'sqlite:///posts.db')
+engine = create_engine("SQLALCHEMY_DATABASE_URI", connect_args={'sslmode': "allow"})
 db = SQLAlchemy(model_class=Base)
 
 db.init_app(app)
